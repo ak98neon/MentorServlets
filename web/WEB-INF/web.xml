@@ -7,11 +7,11 @@
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
     </listener>
     <servlet>
-        <servlet-name>Servlet</servlet-name>
-        <servlet-class>example.Servlet</servlet-class>
+        <servlet-name>Hello</servlet-name>
+        <servlet-class>com.ak98neon.view.HelloServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Servlet</servlet-name>
+        <servlet-name>Hello</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
