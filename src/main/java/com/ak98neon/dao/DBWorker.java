@@ -8,10 +8,10 @@ import java.sql.SQLException;
 
 @Slf4j
 public final class DBWorker {
-    private static Connection connection = null;
-    private static final String URL = "jdbc:h2:~/test";
+    private static final String URL = "jdbc:h2:~/department";
     private static final String USER = "sa";
     private static final String PASS = "";
+    private static Connection connection = null;
 
     private DBWorker() {
     }
@@ -22,7 +22,7 @@ public final class DBWorker {
      * @return Connection
      * @throws SQLException if connection is null
      */
-    public synchronized static Connection getConnection() throws SQLException {
+    public static synchronized Connection getConnection() throws SQLException {
         if (connection == null) {
             try {
                 Class.forName("org.h2.Driver");
