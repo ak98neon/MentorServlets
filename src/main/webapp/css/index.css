@@ -1,6 +1,7 @@
 body {
     padding: 0;
-    background-image: url("../img/department.png");
+    background: white;
+    width: 100%;
     transition: all .5s;
     margin: 0 auto;
 }
