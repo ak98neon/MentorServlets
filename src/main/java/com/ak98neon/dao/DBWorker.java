@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 @Slf4j
 public final class DBWorker {
-    private static final String URL = "jdbc:h2:~/department";
+    private static final String URL = "jdbc:h2:~/test";
     private static final String USER = "sa";
     private static final String PASS = "";
     private static Connection connection = null;
@@ -24,11 +24,6 @@ public final class DBWorker {
      */
     public static synchronized Connection getConnection() throws SQLException {
         if (connection == null) {
-            try {
-                Class.forName("org.h2.Driver");
-            } catch (ClassNotFoundException e) {
-                log.info("{}", e);
-            }
             connection = DriverManager.getConnection(URL, USER, PASS);
             return connection;
         } else {

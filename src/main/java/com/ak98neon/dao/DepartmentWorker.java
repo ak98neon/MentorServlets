@@ -16,7 +16,7 @@ public final class DepartmentWorker {
     }
 
     public static synchronized void createTable() {
-        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.CREATE_TABLE)) {
+        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.CREATE_TABLE2)) {
             final int resStatement = statement.executeUpdate();
             if (resStatement == 0) {
                 log.info("table has been is created");
