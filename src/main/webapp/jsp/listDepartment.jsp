@@ -19,7 +19,7 @@
 <div class="wrapper">
     <div class="header">List Department</div>
     <div class="departments">
-        <button class="btn-add"><<a href="/addDepartment">Add Department</a></button>
+        <button class="btn-add"><a href="/addDepartment">Add Department</a></button>
         <table class="list">
             <tr class="header-table">
                 <th>#</th>

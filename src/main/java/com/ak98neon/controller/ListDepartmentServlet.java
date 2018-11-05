@@ -16,7 +16,6 @@ public class ListDepartmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         DepartmentWorker.createTable();
-        DepartmentWorker.insertDepartment("TESTDEP");
         List<Department> departmentList = DepartmentWorker.selectAllDepartments();
         request.setAttribute("departments", departmentList);
 

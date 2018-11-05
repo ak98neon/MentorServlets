@@ -40,10 +40,14 @@ public final class DepartmentWorker {
 
     public static synchronized boolean updateDepartment(final Long id, final String newName) {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.UPDATE_DEPARTMENT)) {
-            statement.setLong(1, id);
-            statement.setString(2, newName);
+            statement.setString(1, newName);
+            statement.setLong(2, id);
             statement.executeUpdate();
-            log.info("Update is successfully");
+            final int resStatement = statement.executeUpdate();
+            if (resStatement == 0) {
+                log.info("Record is updated to table!");
+                return true;
+            }
         } catch (SQLException e) {
             log.info("Update Department error: {}", e);
         }
