@@ -16,7 +16,7 @@ public final class DepartmentWorker {
     }
 
     public static synchronized void createTable() {
-        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.CREATE_TABLE2)) {
+        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.CREATE_TABLE)) {
             final int resStatement = statement.executeUpdate();
             if (resStatement == 0) {
                 log.info("table has been is created");
@@ -36,6 +36,49 @@ public final class DepartmentWorker {
         } catch (SQLException e) {
             log.info("Insert Department, Error: {}", e);
         }
+    }
+
+    public static synchronized boolean updateDepartment(final Long id, final String newName) {
+        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.UPDATE_DEPARTMENT)) {
+            statement.setLong(1, id);
+            statement.setString(2, newName);
+            statement.executeUpdate();
+            log.info("Update is successfully");
+        } catch (SQLException e) {
+            log.info("Update Department error: {}", e);
+        }
+        return false;
+    }
+
+    public static synchronized boolean deleteDepartment(final long id) {
+        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.DELETE_DEPARTMENT)) {
+            statement.setLong(1, id);
+            final int resStatement = statement.executeUpdate();
+            if (resStatement == 0) {
+                log.info("Record is delete to table");
+                return true;
+            }
+        } catch (SQLException e) {
+            log.info("Delete error: {}", e);
+        }
+        return false;
+    }
+
+    public static synchronized Department selectById(final long id) {
+        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.SELECT_DEPARTMENT)) {
+            try (ResultSet set = statement.executeQuery()) {
+                Department dep = new Department();
+                while (set.next()) {
+                    dep.setId(set.getLong(Department.ID_COLUMN));
+                    dep.setName(set.getString(Department.NAME_COLUMN));
+                }
+                log.info("Department is select for id");
+                return dep;
+            }
+        } catch (SQLException e) {
+            log.info("{}", e);
+        }
+        return null;
     }
 
     public static synchronized List<Department> selectAllDepartments() {

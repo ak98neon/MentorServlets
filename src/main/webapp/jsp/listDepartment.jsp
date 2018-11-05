@@ -1,5 +1,5 @@
-<%@ page import="com.ak98neon.model.Department" %>
-<%@ page import="java.util.List" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
   Created by IntelliJ IDEA.
   User: artemkudrya
   Date: 11/4/18
@@ -11,20 +11,35 @@
 <head>
     <title>List Department</title>
     <meta charset="UTF-8">
+    <style type="text/css">
+        <%@include file = "../css/listDepartmentStyle.css"%>
+    </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header">List Department</div>
-        <div class="Departments">
-            <ui>
-                <%
-                    List<Department> list = (List<Department>) request.getAttribute("departments");
-                    if (list != null && !list.isEmpty()) {
-                        list.forEach((dep) -> System.out.println("<li>" + dep.getId() + " " + dep.getName() + "</li>"));
-                    } else out.println("<p>There are no departments yet!</p>");
-                %>
-            </ui>
-        </div>
+<div class="wrapper">
+    <div class="header">List Department</div>
+    <div class="departments">
+        <button class="btn-add"><<a href="/addDepartment">Add Department</a></button>
+        <table class="list">
+            <tr class="header-table">
+                <th>#</th>
+                <th>Name Department</th>
+                <th>Update</th>
+                <th>Delete</th>
+                <th>List Employees</th>
+            </tr>
+            <%--@elvariable id="departments" type="java.util.List"--%>
+            <c:forEach items="${departments}" var="oneItem">
+                <tr>
+                    <td>id: ${oneItem.id}</td>
+                    <td>name: ${oneItem.name}</td>
+                    <td><a class="btn btn-update" href="/updateDepartment?id=${oneItem.id}">Update</a></td>
+                    <td><a class="btn btn-delete" href="/deleteDepartment?id=${oneItem.id}">Delete</a></td>
+                    <td><a class="btn btn-list-employees" href="#">List Employees</a></td>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
+</div>
 </body>
 </html>

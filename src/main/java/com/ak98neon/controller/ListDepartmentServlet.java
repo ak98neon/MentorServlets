@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@WebServlet(name = "ListDepartmentServlet", urlPatterns = "/listDepartment")
+@WebServlet(name = "ListDepartmentServlet")
 @Slf4j
 public class ListDepartmentServlet extends HttpServlet {
     @Override
@@ -21,7 +21,7 @@ public class ListDepartmentServlet extends HttpServlet {
         request.setAttribute("departments", departmentList);
 
         try {
-            getServletContext().getRequestDispatcher("/jsp/listDepartment").forward(request, response);
+            request.getRequestDispatcher("/jsp/listDepartment.jsp").forward(request, response);
         } catch (Exception e) {
             log.info("Error forward: {} ", e.getMessage());
         }

@@ -9,11 +9,20 @@ import java.sql.SQLException;
 @Slf4j
 public final class DBWorker {
     private static final String URL = "jdbc:h2:~/test";
+    private static final String DRIVER = "org.h2.Driver";
     private static final String USER = "sa";
     private static final String PASS = "";
     private static Connection connection = null;
 
     private DBWorker() {
+    }
+
+    private static void getDriver() {
+        try {
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            log.info("{}", e);
+        }
     }
 
     /**
@@ -23,6 +32,7 @@ public final class DBWorker {
      * @throws SQLException if connection is null
      */
     public static synchronized Connection getConnection() throws SQLException {
+        getDriver();
         if (connection == null) {
             connection = DriverManager.getConnection(URL, USER, PASS);
             return connection;

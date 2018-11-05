@@ -11,4 +11,36 @@
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListDepartment</servlet-name>
+        <servlet-class>com.ak98neon.controller.ListDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListDepartment</servlet-name>
+        <url-pattern>/listDepartment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteDepartment</servlet-name>
+        <servlet-class>com.ak98neon.controller.DeleteDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteDepartment</servlet-name>
+        <url-pattern>/deleteDepartment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddDepartment</servlet-name>
+        <servlet-class>com.ak98neon.controller.AddDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddDepartment</servlet-name>
+        <url-pattern>/addDepartment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateDepartment</servlet-name>
+        <servlet-class>com.ak98neon.controller.UpdateDepartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateDepartment</servlet-name>
+        <url-pattern>/updateDepartment</url-pattern>
+    </servlet-mapping>
 </web-app>
