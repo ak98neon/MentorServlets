@@ -8,9 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Update Employee</title>
 </head>
 <body>
-$END$
+<form action="updateEmployee" method="post">
+    <fieldset class="form-name">
+        <label>First Name</label><input type="text" name="first_name" value="${firstName}"/><br/>
+        <label>Last Name</label><input type="text" name="last_name" value="${lastName}"/><br/>
+        <label>Age</label><input type="text" name="age" value="${age}"/><br/>
+        <label>Mail</label><input type="text" name="mail" value="${mail}"/><br/>
+        <label>Department ID</label><input type="text" name="department_id" value="${department_id}"/><br/>
+    </fieldset>
+    <input type="submit" class="btn btn-success" value="UPDATE">
+</form>
 </body>
 </html>

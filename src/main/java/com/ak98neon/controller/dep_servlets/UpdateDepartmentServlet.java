@@ -1,4 +1,4 @@
-package com.ak98neon.controller.dep;
+package com.ak98neon.controller.dep_servlets;
 
 import com.ak98neon.dao.DepartmentWorker;
 
@@ -19,6 +19,7 @@ public class UpdateDepartmentServlet extends HttpServlet {
         req.getRequestDispatcher("/jsp/updateDepartment.jsp").forward(req, resp);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         DepartmentWorker.updateDepartment(Long.parseLong(id), name);

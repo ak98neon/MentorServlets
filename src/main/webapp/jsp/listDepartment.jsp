@@ -31,11 +31,11 @@
             <%--@elvariable id="departments" type="java.util.List"--%>
             <c:forEach items="${departments}" var="oneItem">
                 <tr>
-                    <td>id: ${oneItem.id}</td>
-                    <td>name: ${oneItem.name}</td>
+                    <td>${oneItem.id}</td>
+                    <td>${oneItem.name}</td>
                     <td><a class="btn btn-update" href="/updateDepartment?id=${oneItem.id}">Update</a></td>
                     <td><a class="btn btn-delete" href="/deleteDepartment?id=${oneItem.id}">Delete</a></td>
-                    <td><a class="btn btn-list-employees" href="#">List Employees</a></td>
+                    <td><a class="btn btn-list-employees" href="/listEmployee?id=${oneItem.id}">List Employees</a></td>
                 </tr>
             </c:forEach>
         </table>

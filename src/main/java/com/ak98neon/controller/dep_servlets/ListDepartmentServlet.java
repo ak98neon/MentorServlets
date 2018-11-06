@@ -1,4 +1,4 @@
-package com.ak98neon.controller.dep;
+package com.ak98neon.controller.dep_servlets;
 
 import com.ak98neon.dao.DepartmentWorker;
 import com.ak98neon.model.Department;
@@ -15,7 +15,6 @@ import java.util.List;
 public class ListDepartmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        DepartmentWorker.createTable();
         List<Department> departmentList = DepartmentWorker.selectAllDepartments();
         request.setAttribute("departments", departmentList);
 

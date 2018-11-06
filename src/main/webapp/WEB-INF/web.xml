@@ -13,7 +13,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ListDepartment</servlet-name>
-        <servlet-class>com.ak98neon.controller.ListDepartmentServlet</servlet-class>
+        <servlet-class>com.ak98neon.controller.dep_servlets.ListDepartmentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListDepartment</servlet-name>
@@ -21,7 +21,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>DeleteDepartment</servlet-name>
-        <servlet-class>com.ak98neon.controller.DeleteDepartmentServlet</servlet-class>
+        <servlet-class>com.ak98neon.controller.dep_servlets.DeleteDepartmentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeleteDepartment</servlet-name>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>AddDepartment</servlet-name>
-        <servlet-class>com.ak98neon.controller.AddDepartmentServlet</servlet-class>
+        <servlet-class>com.ak98neon.controller.dep_servlets.AddDepartmentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddDepartment</servlet-name>
@@ -37,10 +37,42 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>UpdateDepartment</servlet-name>
-        <servlet-class>com.ak98neon.controller.UpdateDepartmentServlet</servlet-class>
+        <servlet-class>com.ak98neon.controller.dep_servlets.UpdateDepartmentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateDepartment</servlet-name>
         <url-pattern>/updateDepartment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ListEmployee</servlet-name>
+        <servlet-class>com.ak98neon.controller.empl_servlets.ListEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListEmployee</servlet-name>
+        <url-pattern>/listEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <servlet-class>com.ak98neon.controller.empl_servlets.DeleteEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <url-pattern>/deleteEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>com.ak98neon.controller.empl_servlets.AddEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/addEmployee</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <servlet-class>com.ak98neon.controller.empl_servlets.UpdateEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateEmployee</servlet-name>
+        <url-pattern>/updateEmployee</url-pattern>
     </servlet-mapping>
 </web-app>

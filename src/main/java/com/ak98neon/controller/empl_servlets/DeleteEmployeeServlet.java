@@ -1,10 +1,26 @@
-@javax.servlet.annotation.WebServlet(name = "DeleteEmployeeServlet")
-public class DeleteEmployeeServlet extends javax.servlet.http.HttpServlet {
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, java.io.IOException {
+package com.ak98neon.controller.empl_servlets;
 
-    }
+import com.ak98neon.dao.EmployeeWorker;
+import lombok.extern.slf4j.Slf4j;
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, java.io.IOException {
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "DeleteEmployeeServlet")
+@Slf4j
+public class DeleteEmployeeServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            final String parametrDepId = "id";
+            String id = request.getParameter(parametrDepId);
+            EmployeeWorker.deleteEmployee(Long.parseLong(id));
+            String depId = request.getParameter("depId");
+            response.sendRedirect("/listEmployee?" + parametrDepId + "=" + depId);
+        } catch (Exception e) {
+            log.info("DeleteEmployeeServlet error: {}", e);
+        }
     }
 }

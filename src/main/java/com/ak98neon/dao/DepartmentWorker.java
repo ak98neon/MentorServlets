@@ -19,10 +19,10 @@ public final class DepartmentWorker {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.CREATE_TABLE)) {
             final int resStatement = statement.executeUpdate();
             if (resStatement == 0) {
-                log.info("table has been is created");
+                log.info("table department has been is created");
             }
         } catch (SQLException e) {
-            log.info("Table is not created, error: {}", e.getSQLState());
+            log.info("Table department is not created, error: {}", e.getSQLState());
         }
     }
 
@@ -45,7 +45,7 @@ public final class DepartmentWorker {
             statement.executeUpdate();
             final int resStatement = statement.executeUpdate();
             if (resStatement == 0) {
-                log.info("Record is updated to table!");
+                log.info("Record department is updated to table!");
                 return true;
             }
         } catch (SQLException e) {
@@ -59,17 +59,18 @@ public final class DepartmentWorker {
             statement.setLong(1, id);
             final int resStatement = statement.executeUpdate();
             if (resStatement == 0) {
-                log.info("Record is delete to table");
+                log.info("Record department is delete to table");
                 return true;
             }
         } catch (SQLException e) {
-            log.info("Delete error: {}", e);
+            log.info("Delete department error: {}", e);
         }
         return false;
     }
 
     public static synchronized Department selectById(final long id) {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.SELECT_DEPARTMENT)) {
+            statement.setLong(1, id);
             try (ResultSet set = statement.executeQuery()) {
                 Department dep = new Department();
                 while (set.next()) {
@@ -80,7 +81,7 @@ public final class DepartmentWorker {
                 return dep;
             }
         } catch (SQLException e) {
-            log.info("{}", e);
+            log.info("department select by id, error: {}", e);
         }
         return null;
     }
