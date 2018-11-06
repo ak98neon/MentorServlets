@@ -1,4 +1,4 @@
-package com.ak98neon.controller;
+package com.ak98neon.controller.dep;
 
 import com.ak98neon.dao.DepartmentWorker;
 import lombok.extern.slf4j.Slf4j;
