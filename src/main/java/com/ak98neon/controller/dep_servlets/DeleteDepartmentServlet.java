@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteDepartmentServlet")
+@WebServlet(name = "DeleteDepartmentServlet", urlPatterns = "/deleteDepartment")
 @Slf4j
 public class DeleteDepartmentServlet extends HttpServlet {
     @Override
@@ -18,7 +18,7 @@ public class DeleteDepartmentServlet extends HttpServlet {
             DepartmentWorker.deleteDepartment(Long.parseLong(id));
             response.sendRedirect("/listDepartment");
         } catch (Exception e) {
-            log.info("DeleteDepartmentServlet error: {}", e);
+            log.info("[GET]DeleteDepartmentServlet error: {}", e);
         }
     }
 }

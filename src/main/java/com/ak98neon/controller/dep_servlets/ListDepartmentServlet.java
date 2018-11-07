@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@WebServlet(name = "ListDepartmentServlet")
+@WebServlet(name = "ListDepartmentServlet", urlPatterns = "/listDepartment")
 @Slf4j
 public class ListDepartmentServlet extends HttpServlet {
     @Override

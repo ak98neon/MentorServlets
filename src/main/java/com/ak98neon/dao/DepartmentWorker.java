@@ -15,27 +15,31 @@ public final class DepartmentWorker {
     private DepartmentWorker() {
     }
 
-    public static synchronized void createTable() {
+    public static synchronized boolean createTable() {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.CREATE_TABLE)) {
             final int resStatement = statement.executeUpdate();
             if (resStatement == 0) {
                 log.info("table department has been is created");
+                return true;
             }
         } catch (SQLException e) {
             log.info("Table department is not created, error: {}", e.getSQLState());
         }
+        return false;
     }
 
-    public static synchronized void insertDepartment(final String name) {
+    public static synchronized boolean insertDepartment(final String name) {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.INSERT_DEPARTMENT)) {
             statement.setString(1, name);
             final int resStatement = statement.executeUpdate();
             if (resStatement > 0) {
                 log.info("Department is inserted into table!");
+                return true;
             }
         } catch (SQLException e) {
             log.info("Insert Department, Error: {}", e);
         }
+        return false;
     }
 
     public static synchronized boolean updateDepartment(final Long id, final String newName) {
@@ -103,5 +107,16 @@ public final class DepartmentWorker {
             log.info("Select all departments, Error: {}", e);
         }
         return new ArrayList<>();
+    }
+
+    public static synchronized boolean dropTable() {
+        try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.DROP_TABLE)) {
+            statement.executeUpdate();
+            log.info("table department is drop");
+            return true;
+        } catch (SQLException e) {
+            log.info("table department drop error: {}", e);
+        }
+        return false;
     }
 }

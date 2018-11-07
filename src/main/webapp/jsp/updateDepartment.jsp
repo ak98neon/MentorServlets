@@ -14,7 +14,7 @@
 <h1>Update Department</h1>
 <form action="updateDepartment" method="post">
     <fieldset class="form-name">
-        <label>Name</label><input type="text" name="name"/><br/>
+        <label>Name</label><input type="text" name="name" value="${name}"/><br/>
     </fieldset>
     <input type="submit" class="btn btn-success" value="UPDATE">
 </form>

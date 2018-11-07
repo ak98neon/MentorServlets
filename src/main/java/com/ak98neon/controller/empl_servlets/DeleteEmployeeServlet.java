@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DeleteEmployeeServlet")
+@WebServlet(name = "DeleteEmployeeServlet", urlPatterns = "/deleteEmployee")
 @Slf4j
 public class DeleteEmployeeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
-            final String parametrDepId = "id";
-            String id = request.getParameter(parametrDepId);
+            final String parameterDepId = "id";
+            String id = request.getParameter(parameterDepId);
             EmployeeWorker.deleteEmployee(Long.parseLong(id));
             String depId = request.getParameter("depId");
-            response.sendRedirect("/listEmployee?" + parametrDepId + "=" + depId);
+            response.sendRedirect("/listEmployee?" + parameterDepId + "=" + depId);
         } catch (Exception e) {
             log.info("DeleteEmployeeServlet error: {}", e);
         }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListEmployeeServlet")
+@WebServlet(name = "ListEmployeeServlet", urlPatterns = "/listEmployee")
 @Slf4j
 public class ListEmployeeServlet extends HttpServlet {
     @Override

@@ -17,7 +17,7 @@
         <label>Last Name</label><input type="text" name="last_name" value="${lastName}"/><br/>
         <label>Age</label><input type="text" name="age" value="${age}"/><br/>
         <label>Mail</label><input type="text" name="mail" value="${mail}"/><br/>
-        <label>Department ID</label><input type="text" name="department_id" value="${department_id}"/><br/>
+        <input style="display:none;" type="text" name="department_id" value="${department_id}"/><br/>
     </fieldset>
     <input type="submit" class="btn btn-success" value="UPDATE">
 </form>

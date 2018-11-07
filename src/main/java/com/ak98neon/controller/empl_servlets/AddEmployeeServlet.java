@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddEmployeeServlet")
+@WebServlet(name = "AddEmployeeServlet", urlPatterns = "/addEmployee")
 @Slf4j
 public class AddEmployeeServlet extends HttpServlet {
     private static String depId;

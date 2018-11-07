@@ -11,22 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "UpdateEmployeeServlet")
+@WebServlet(name = "UpdateEmployeeServlet", urlPatterns = "/updateEmployee")
 @Slf4j
 public class UpdateEmployeeServlet extends HttpServlet {
-    private static long id;
-    private static String departmentID;
+    private long id;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            id = Long.parseLong(req.getParameter("id"));
-            Employee employee = EmployeeWorker.selectByIdEmployee(id);
-            req.setAttribute("firstName", employee.getFirstName());
-            req.setAttribute("lastName", employee.getLastName());
-            req.setAttribute("age", employee.getAge());
-            req.setAttribute("mail", employee.getMail());
-            req.setAttribute("department_id", employee.getDepartmentId());
+                id = Long.parseLong(req.getParameter("id"));
+                Employee employee = EmployeeWorker.selectByIdEmployee(id);
+            if (employee != null) {
+                req.setAttribute("firstName", employee.getFirstName());
+                req.setAttribute("lastName", employee.getLastName());
+                req.setAttribute("age", employee.getAge());
+                req.setAttribute("mail", employee.getMail());
+                req.setAttribute("department_id", employee.getDepartmentId());
+            }
             req.getRequestDispatcher("/jsp/updateEmployee.jsp").forward(req, resp);
         } catch (IOException | NumberFormatException | ServletException e) {
             log.info("Update employee(GET), error {}", e);
@@ -35,6 +36,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        String departmentID = "";
         try {
             String firstname = request.getParameter("first_name");
             String lastname = request.getParameter("last_name");
@@ -43,14 +45,14 @@ public class UpdateEmployeeServlet extends HttpServlet {
             String mail = request.getParameter("mail");
             departmentID = request.getParameter("department_id");
             long longDepId = Long.parseLong(departmentID);
-            EmployeeWorker.updateEmployee(id, firstname, lastname, intAge, mail, longDepId);
+            EmployeeWorker.updateEmployee(id, firstname, lastname, intAge, mail);
             response.sendRedirect("/listEmployee?id=" + departmentID);
         } catch (IOException | NumberFormatException e) {
             log.info("Update employee(GET), error {}", e);
             try {
                 response.sendRedirect("/listEmployee?id=" + departmentID);
             } catch (IOException e1) {
-                log.info("post update employee, error: {}", e1);
+                log.info("[POST] update employee, error: {}", e1);
             }
         }
     }

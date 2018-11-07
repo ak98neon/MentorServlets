@@ -55,6 +55,5 @@ public final class Queries {
             + ", " + Employee.LAST_NAME_COLUMN + " = ?"
             + ", " + Employee.AGE_COLUMN + " = ?"
             + ", " + Employee.MAIL_COLUMN + " = ?"
-            + ", " + Employee.DEPARTMENT_ID + " = ?"
             + " WHERE " + Employee.ID_COLUMN + " = ?";
 }
