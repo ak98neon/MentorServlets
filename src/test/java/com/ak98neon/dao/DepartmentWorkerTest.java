@@ -32,7 +32,9 @@ public class DepartmentWorkerTest {
 
     @Test
     public void delete_RequestToDeleteDepartment_True() {
-        assertTrue(DepartmentWorker.deleteDepartment(id));
+        List<Department> list = DepartmentWorker.selectAllDepartments();
+        assert list != null;
+        assertTrue(DepartmentWorker.deleteDepartment(list.get(0).getId()));
     }
 
     @Test
@@ -42,15 +44,15 @@ public class DepartmentWorkerTest {
 
     @Test
     public void select_DepartmentName_ObjectDepartment() {
-        Department s = DepartmentWorker.selectById(id);
-        assert s != null;
-        assertNotNull(s.getName());
+        List<Department> list = DepartmentWorker.selectAllDepartments();
+        assert list != null;
+        assertNotNull(list.get(0).getId());
     }
 
     @Test
     public void select_RequestToSelectAll_True() {
         List<Department> list = DepartmentWorker.selectAllDepartments();
-        assertTrue(list.isEmpty());
+        assertTrue(!list.isEmpty());
     }
 
     @Test

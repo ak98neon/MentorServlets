@@ -59,7 +59,7 @@ public final class EmployeeWorker {
             statement.setLong(5, id);
             statement.executeUpdate();
             final int resStatement = statement.executeUpdate();
-            if (resStatement == 0) {
+            if (resStatement > 0) {
                 log.info("Record employee is updated to table!");
                 return true;
             }
@@ -73,7 +73,7 @@ public final class EmployeeWorker {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.DELETE_EMPLOYEE)) {
             statement.setLong(1, id);
             final int resStatement = statement.executeUpdate();
-            if (resStatement == 0) {
+            if (resStatement > 0) {
                 log.info("Record employee is delete to table");
                 return true;
             }

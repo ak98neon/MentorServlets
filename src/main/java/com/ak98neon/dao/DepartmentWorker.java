@@ -62,7 +62,7 @@ public final class DepartmentWorker {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.DELETE_DEPARTMENT)) {
             statement.setLong(1, id);
             final int resStatement = statement.executeUpdate();
-            if (resStatement == 0) {
+            if (resStatement > 0) {
                 log.info("Record department is delete to table");
                 return true;
             }

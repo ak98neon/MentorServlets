@@ -35,17 +35,23 @@ public class EmployeeWorkerTest {
 
     @Test
     public void delete_RequestToDeleteEmployee_True() {
-        assertTrue(EmployeeWorker.deleteEmployee(id));
+        List<Employee> list = EmployeeWorker.selectAllEmployees();
+        assert list != null;
+        assertTrue(EmployeeWorker.deleteEmployee(list.get(0).getId()));
     }
 
     @Test
     public void update_NameAndLNameAndAgeAndMail_True() {
-        assertTrue(EmployeeWorker.updateEmployee(id, employee.getFirstName(), employee.getLastName(), employee.getAge(), employee.getMail()));
+        List<Employee> list = EmployeeWorker.selectAllEmployees();
+        assert list != null;
+        assertTrue(EmployeeWorker.updateEmployee(list.get(0).getId(), employee.getFirstName(), employee.getLastName(), employee.getAge(), employee.getMail()));
     }
 
     @Test
     public void select_EpmployeeName_ObjectEmployee() {
-        Employee s = EmployeeWorker.selectByIdEmployee(id);
+        List<Employee> list = EmployeeWorker.selectAllEmployees();
+        assert list != null;
+        Employee s = EmployeeWorker.selectByIdEmployee(list.get(0).getId());
         assert s != null;
         assertNotNull(s.getFirstName());
     }
@@ -53,7 +59,8 @@ public class EmployeeWorkerTest {
     @Test
     public void select_RequestToSelectAll_True() {
         List<Employee> list = EmployeeWorker.selectAllEmployeesByDepartment(id);
-        assertTrue(list.isEmpty());
+        assert list != null;
+        assertTrue(!list.isEmpty());
     }
 
     @Test
