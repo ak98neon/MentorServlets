@@ -31,6 +31,7 @@ public class AddDepartmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             getServletContext().getRequestDispatcher("/jsp/addDepartment.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             log.info("[GET]add department error: {}", e);

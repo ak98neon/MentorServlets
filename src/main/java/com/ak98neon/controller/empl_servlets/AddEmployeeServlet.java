@@ -16,6 +16,7 @@ public class AddEmployeeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             String depId = req.getParameter("depId");
             String firstName = req.getParameter("first_name");
             String lastName = req.getParameter("last_name");
@@ -38,6 +39,7 @@ public class AddEmployeeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             String depId = req.getParameter("id");
             req.setAttribute("id", depId);
             getServletContext().getRequestDispatcher("/jsp/addEmployee.jsp").forward(req, resp);

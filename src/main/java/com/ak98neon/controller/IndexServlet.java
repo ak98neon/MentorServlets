@@ -17,6 +17,7 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             DepartmentWorker.createTable();
             EmployeeWorker.createTable();
             EmployeeWorker.insertEmployee("Artem", "Kudria", 20, "mail@mail.com", 161);

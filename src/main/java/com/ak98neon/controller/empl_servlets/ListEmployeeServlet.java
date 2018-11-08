@@ -27,6 +27,7 @@ public class ListEmployeeServlet extends HttpServlet {
 
     private void processListEmployee(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             String depId = req.getParameter("id");
             List<Employee> employees = EmployeeWorker.selectAllEmployeesByDepartment(Long.parseLong(depId));
             req.setAttribute("employees", employees);

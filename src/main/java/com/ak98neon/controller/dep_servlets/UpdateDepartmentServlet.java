@@ -17,6 +17,7 @@ public class UpdateDepartmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             String id = req.getParameter("id");
             Department department = DepartmentWorker.selectById(Long.parseLong(id));
             assert department != null;
@@ -31,6 +32,7 @@ public class UpdateDepartmentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             String name = req.getParameter("name");
             String id = req.getParameter("id");
             DepartmentWorker.updateDepartment(Long.parseLong(id), name);

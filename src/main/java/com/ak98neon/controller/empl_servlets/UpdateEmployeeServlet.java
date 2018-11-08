@@ -17,6 +17,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             long id = Long.parseLong(req.getParameter("id"));
             Employee employee = EmployeeWorker.selectByIdEmployee(id);
             if (employee != null) {
@@ -37,6 +38,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         String departmentID = "";
         try {
+            req.setCharacterEncoding("UTF-8");
             long id = Long.parseLong(req.getParameter("id"));
             String firstName = req.getParameter("first_name");
             String lastName = req.getParameter("last_name");
