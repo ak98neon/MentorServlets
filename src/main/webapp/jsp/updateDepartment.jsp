@@ -6,15 +6,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="ru">
 <head>
     <title>Update Department</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 <h1>Update Department</h1>
 <form action="updateDepartment" method="post">
     <fieldset class="form-name">
         <label>Name</label><input type="text" name="name" value="${name}"/><br/>
+        <input type="hidden" name="id" value="${id}"/>
     </fieldset>
     <input type="submit" class="btn btn-success" value="UPDATE">
 </form>

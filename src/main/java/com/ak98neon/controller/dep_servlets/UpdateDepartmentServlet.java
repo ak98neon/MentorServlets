@@ -14,17 +14,13 @@ import java.io.IOException;
 @WebServlet(name = "UpdateDepartmentServlet", urlPatterns = "/updateDepartment")
 @Slf4j
 public class UpdateDepartmentServlet extends HttpServlet {
-    /**
-     * Buffer variable for id department
-     */
-    private String id = "";
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            id = req.getParameter("id");
+            String id = req.getParameter("id");
             Department department = DepartmentWorker.selectById(Long.parseLong(id));
             assert department != null;
+            req.setAttribute("id", id);
             req.setAttribute("name", department.getName());
             req.getRequestDispatcher("/jsp/updateDepartment.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
@@ -33,11 +29,12 @@ public class UpdateDepartmentServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            String name = request.getParameter("name");
+            String name = req.getParameter("name");
+            String id = req.getParameter("id");
             DepartmentWorker.updateDepartment(Long.parseLong(id), name);
-            response.sendRedirect("/listDepartment");
+            resp.sendRedirect("/listDepartment");
         } catch (NumberFormatException | IOException e) {
             log.info("Update Department error: {}", e);
         }

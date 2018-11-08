@@ -14,12 +14,12 @@ import java.util.List;
 @Slf4j
 public class ListDepartmentServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         List<Department> departmentList = DepartmentWorker.selectAllDepartments();
-        request.setAttribute("departments", departmentList);
+        req.setAttribute("departments", departmentList);
 
         try {
-            request.getRequestDispatcher("/jsp/listDepartment.jsp").forward(request, response);
+            req.getRequestDispatcher("/jsp/listDepartment.jsp").forward(req, resp);
         } catch (Exception e) {
             log.info("Error forward: {} ", e.getMessage());
         }

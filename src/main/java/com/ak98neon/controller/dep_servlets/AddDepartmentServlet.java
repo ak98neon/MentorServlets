@@ -17,20 +17,20 @@ import java.io.IOException;
  */
 public class AddDepartmentServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            String name = request.getParameter("name");
+            String name = req.getParameter("name");
             DepartmentWorker.insertDepartment(name);
-            response.sendRedirect("/listDepartment");
+            resp.sendRedirect("/listDepartment");
         } catch (IOException e) {
             log.info("[POST]add department error: {}", e);
         }
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            getServletContext().getRequestDispatcher("/jsp/addDepartment.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/jsp/addDepartment.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             log.info("[GET]add department error: {}", e);
         }

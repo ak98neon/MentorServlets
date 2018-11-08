@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class DeleteDepartmentServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String id = request.getParameter("id");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        String id = req.getParameter("id");
         try {
             DepartmentWorker.deleteDepartment(Long.parseLong(id));
-            response.sendRedirect("/listDepartment");
+            resp.sendRedirect("/listDepartment");
         } catch (Exception e) {
             log.info("[GET]DeleteDepartmentServlet error: {}", e);
         }
