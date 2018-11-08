@@ -6,7 +6,7 @@
   Time: 12:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
 <html lang="ru">
 <head>
     <title>Index</title>

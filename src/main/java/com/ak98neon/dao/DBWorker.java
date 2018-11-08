@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 @Slf4j
 public final class DBWorker {
-    private static final String URL = "jdbc:h2:~/test";
+    private static final String URL = "jdbc:h2:~/test?useUnicode=true&characterEncoding=utf8";
     private static final String DRIVER = "org.h2.Driver";
     private static final String USER = "sa";
     private static final String PASS = "";

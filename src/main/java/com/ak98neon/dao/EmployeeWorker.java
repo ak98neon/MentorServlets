@@ -30,7 +30,7 @@ public final class EmployeeWorker {
     }
 
     public static synchronized boolean insertEmployee(final String firstName, final String lastName, final int age, final String mail,
-                                                   final long departmentId) {
+                                                      final long departmentId) {
         try (PreparedStatement statement = DBWorker.getConnection().prepareStatement(Queries.INSERT_EMPLOYEE)) {
             statement.setString(1, firstName);
             statement.setString(2, lastName);

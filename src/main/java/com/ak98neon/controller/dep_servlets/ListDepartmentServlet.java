@@ -15,6 +15,7 @@ import java.util.List;
 public class ListDepartmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        resp.setCharacterEncoding("utf-8");
         List<Department> departmentList = DepartmentWorker.selectAllDepartments();
         req.setAttribute("departments", departmentList);
 

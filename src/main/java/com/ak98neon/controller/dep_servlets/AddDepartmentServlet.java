@@ -19,6 +19,7 @@ public class AddDepartmentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            req.setCharacterEncoding("UTF-8");
             String name = req.getParameter("name");
             DepartmentWorker.insertDepartment(name);
             resp.sendRedirect("/listDepartment");
