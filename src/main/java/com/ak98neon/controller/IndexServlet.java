@@ -23,6 +23,8 @@ public class IndexServlet extends HttpServlet {
             req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             log.info("index servlet error: {}", e);
+            DepartmentWorker.dropTable();
+            EmployeeWorker.dropTable();
         }
     }
 }

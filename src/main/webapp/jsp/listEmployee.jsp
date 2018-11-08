@@ -1,3 +1,4 @@
+<%--@elvariable id="depId" type="java"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -6,7 +7,7 @@
   Time: 22:40
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ru">
 <head>
     <title>List Employee</title>
@@ -19,7 +20,7 @@
 <div class="wrapper">
     <div class="header">List Employee</div>
     <div class="departments">
-        <button class="btn-add"><a href="/addEmployee?id=${depId}">Add Employee</a></button>
+        <button class="btn-add"><a href="${pageContext.request.contextPath}/addEmployee?id=${depId}">Add Employee</a></button>
         <table class="list">
             <tr class="header-table">
                 <th>#</th>
@@ -42,8 +43,8 @@
                     <td>${oneItem.mail}</td>
                     <td>${oneItem.dateOfCreation}</td>
                     <td>${oneItem.departmentId}</td>
-                    <td><a class="btn btn-update" href="/updateEmployee?id=${oneItem.id}&depId=${depId}">Update</a></td>
-                    <td><a class="btn btn-delete" href="/deleteEmployee?id=${oneItem.id}&depId=${depId}">Delete</a></td>
+                    <td><a class="btn btn-update" href="${pageContext.request.contextPath}/updateEmployee?id=${oneItem.id}&depId=${depId}">Update</a></td>
+                    <td><a class="btn btn-delete" href="${pageContext.request.contextPath}/deleteEmployee?id=${oneItem.id}&depId=${depId}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>

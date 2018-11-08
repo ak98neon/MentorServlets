@@ -58,7 +58,7 @@ public class EmployeeWorkerTest {
 
     @Test
     public void select_RequestToSelectAll_True() {
-        List<Employee> list = EmployeeWorker.selectAllEmployeesByDepartment(id);
+        List<Employee> list = EmployeeWorker.selectAllEmployees();
         assert list != null;
         assertTrue(!list.isEmpty());
     }

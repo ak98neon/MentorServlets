@@ -6,7 +6,7 @@
   Time: 12:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <html lang="ru">
 <head>
     <title>Index</title>
@@ -16,16 +16,16 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="inner-wrap">
-            <div class="header">
-                <h1>Department</h1>
-            </div>
+<div class="wrapper">
+    <div class="inner-wrap">
+        <div class="header">
+            <h1>Department</h1>
+        </div>
 
-            <div class="content">
-                <button onclick="location.href='/listDepartment'">List Department</button>
-            </div>
+        <div class="content">
+            <button onclick="location.href='/listDepartment'">List Department</button>
         </div>
     </div>
+</div>
 </body>
 </html>
