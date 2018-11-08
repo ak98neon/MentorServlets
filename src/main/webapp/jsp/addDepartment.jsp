@@ -12,11 +12,11 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <form action="post">
-        <label>Name:
-            <input type="text" name="name"><br />
-        </label>
-        <button type="submit">Submit</button>
+    <form action="addDepartment" method="post">
+        <fieldset class="form-name">
+            <label>Name</label><input type="text" name="name"/><br/>
+        </fieldset>
+        <input type="submit" class="btn btn-success" value="Add">
     </form>
 </body>
 </html>
