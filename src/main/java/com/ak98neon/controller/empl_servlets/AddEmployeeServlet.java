@@ -13,23 +13,22 @@ import java.io.IOException;
 @WebServlet(name = "AddEmployeeServlet", urlPatterns = "/addEmployee")
 @Slf4j
 public class AddEmployeeServlet extends HttpServlet {
-    private static String depId;
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            String firstName = request.getParameter("first_name");
-            String lastName = request.getParameter("last_name");
-            String age = request.getParameter("age");
+            String depId = req.getParameter("depId");
+            String firstName = req.getParameter("first_name");
+            String lastName = req.getParameter("last_name");
+            String age = req.getParameter("age");
             int intAge = Integer.parseInt(age);
-            String mail = request.getParameter("mail");
+            String mail = req.getParameter("mail");
             long longDepId = Long.parseLong(depId);
             EmployeeWorker.insertEmployee(firstName, lastName, intAge, mail, longDepId);
-            response.sendRedirect("/listEmployee?id=" + depId);
+            resp.sendRedirect("/listEmployee?id=" + depId);
         } catch (NumberFormatException | IOException e) {
             log.info("post insert employee, error: {}", e);
             try {
-                response.sendRedirect("/listEmployee?id=" + depId);
+                resp.sendRedirect("/listEmployee?id=" + req.getParameter("depId"));
             } catch (IOException e1) {
                 log.info("post insert employee, error: {}", e1);
             }
@@ -37,10 +36,11 @@ public class AddEmployeeServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            depId = request.getParameter("id");
-            getServletContext().getRequestDispatcher("/jsp/addEmployee.jsp").forward(request, response);
+            String depId = req.getParameter("id");
+            req.setAttribute("id", depId);
+            getServletContext().getRequestDispatcher("/jsp/addEmployee.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             log.info("add employee, error: {}", e);
         }

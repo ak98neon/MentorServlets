@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class DeleteEmployeeServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
             final String parameterDepId = "id";
-            String id = request.getParameter(parameterDepId);
+            String id = req.getParameter(parameterDepId);
             EmployeeWorker.deleteEmployee(Long.parseLong(id));
-            String depId = request.getParameter("depId");
-            response.sendRedirect("/listEmployee?" + parameterDepId + "=" + depId);
+            String depId = req.getParameter("depId");
+            resp.sendRedirect("/listEmployee?" + parameterDepId + "=" + depId);
         } catch (Exception e) {
             log.info("DeleteEmployeeServlet error: {}", e);
         }

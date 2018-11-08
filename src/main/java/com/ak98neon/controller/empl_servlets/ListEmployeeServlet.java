@@ -16,22 +16,22 @@ import java.util.List;
 @Slf4j
 public class ListEmployeeServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        processListEmployee(request, response);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        processListEmployee(req, resp);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        processListEmployee(request, response);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        processListEmployee(req, resp);
     }
 
-    private void processListEmployee(HttpServletRequest request, HttpServletResponse response) {
+    private void processListEmployee(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            String depId = request.getParameter("id");
+            String depId = req.getParameter("id");
             List<Employee> employees = EmployeeWorker.selectAllEmployeesByDepartment(Long.parseLong(depId));
-            request.setAttribute("employees", employees);
-            request.setAttribute("depId", depId);
-            request.getRequestDispatcher("/jsp/listEmployee.jsp").forward(request, response);
+            req.setAttribute("employees", employees);
+            req.setAttribute("depId", depId);
+            req.getRequestDispatcher("/jsp/listEmployee.jsp").forward(req, resp);
         } catch (IOException | NumberFormatException | ServletException e) {
             log.info("parse dep id, error: {}", e);
         }

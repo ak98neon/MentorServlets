@@ -15,12 +15,12 @@ import java.io.IOException;
 @Slf4j
 public class IndexServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
             DepartmentWorker.createTable();
             EmployeeWorker.createTable();
             EmployeeWorker.insertEmployee("Artem", "Kudria", 20, "mail@mail.com", 161);
-            request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
+            req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
         } catch (ServletException | IOException e) {
             log.info("index servlet error: {}", e);
         }
