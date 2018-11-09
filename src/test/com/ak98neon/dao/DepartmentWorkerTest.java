@@ -11,7 +11,6 @@ import static org.junit.Assert.assertTrue;
 
 public class DepartmentWorkerTest {
     private static String nameTestDep = "test";
-    private static long id = 1;
 
     @Before
     public void initAndInsertDepartment() {
@@ -39,6 +38,7 @@ public class DepartmentWorkerTest {
 
     @Test
     public void update_Name_True() {
+        long id = 1;
         assertTrue(DepartmentWorker.updateDepartment(id, "newTEST"));
     }
 

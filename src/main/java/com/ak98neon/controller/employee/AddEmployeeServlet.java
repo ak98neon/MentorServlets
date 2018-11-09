@@ -1,4 +1,4 @@
-package com.ak98neon.controller.empl_servlets;
+package com.ak98neon.controller.employee;
 
 import com.ak98neon.dao.EmployeeWorker;
 import lombok.extern.slf4j.Slf4j;

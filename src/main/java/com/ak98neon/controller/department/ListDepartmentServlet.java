@@ -1,4 +1,4 @@
-package com.ak98neon.controller.dep_servlets;
+package com.ak98neon.controller.department;
 
 import com.ak98neon.dao.DepartmentWorker;
 import com.ak98neon.model.Department;
