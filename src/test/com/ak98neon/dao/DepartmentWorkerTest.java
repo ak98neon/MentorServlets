@@ -3,12 +3,15 @@ package com.ak98neon.dao;
 import com.ak98neon.model.Department;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(JUnit4.class)
 public class DepartmentWorkerTest {
     private static String nameTestDep = "test";
 

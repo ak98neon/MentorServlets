@@ -3,12 +3,15 @@ package com.ak98neon.dao;
 import com.ak98neon.model.Employee;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(JUnit4.class)
 public class EmployeeWorkerTest {
     private static Long id = 1L;
     private static Employee employee = new Employee(id, "test", "test", 20, "test@mail.ru", id);
